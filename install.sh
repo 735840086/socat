@@ -272,10 +272,10 @@ start() {
             http_t="未开启"
             
             if [ $https = 0 ];then
-                http_t="当前为http"
+                http_t="http"
                 http_h="http://"
             else
-                http_t="当前为https"
+                http_t="https"
                 http_h="https://"
             fi
 
@@ -288,8 +288,6 @@ start() {
             echo -e "账号:       ${BOLD}${GREEN}qzpm19kkx${RESET}"
             echo -e "密码:         ${BOLD}${GREEN}xloqslz913${RESET}"
             echo -e ""
-            echo -e "0: ${BOLD}${BLUE}0${RESET}"
-            echo -e "0: ${BOLD}${BLUE}0${RESET}"
             echo -e "0: ${BOLD}${BLUE}${http_t}${RESET}"
             echo "|----------------------------------------------------------------|"
         else
