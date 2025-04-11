@@ -96,19 +96,20 @@ if [ "$lang_choice" = "2" ]; then
 
 elif [ "$lang_choice" = "1" ]; then
     prompt_title="----------  ----------"
-    prompt_install="1. 安装"prompt_start="3. 启动"
-    prompt_stop="4. 停止"
-    prompt_restart="5. 重启"
-    prompt_port="6. 修改端口"
-    prompt_ulimit="7. 解除连接限制"
-    prompt_auto_start="8. 开机启动"
-    prompt_disable_auto_start="9. 关闭开机启动"
-    prompt_status="10. 运行状态"
-    prompt_error_log="11. 错误日志"
-    prompt_clear_log="12. 清理日志"
-    prompt_web_port="13. 当前WEB"
-    prompt_uninstall="14. 卸载"
-    prompt_reset_pwd="15. 重置密码"
+    prompt_install="1. 安装"
+    prompt_start="2. 启动"
+    prompt_stop="3. 停止"
+    prompt_restart="4. 重启"
+    prompt_port="5. 修改端口"
+    prompt_ulimit="6. 解除连接限制"
+    prompt_auto_start="7. 开机启动"
+    prompt_disable_auto_start="8. 关闭开机启动"
+    prompt_status="9. 运行状态"
+    prompt_error_log="10. 错误日志"
+    prompt_clear_log="11. 清理日志"
+    prompt_web_port="12. 当前WEB"
+    prompt_uninstall="13. 卸载"
+    prompt_reset_pwd="14. 重置密码"
     prompt_root_no="root运行脚本！"
     prompt_error_command="错误的指令"
     prompt_msg_1="开始安装"
@@ -176,7 +177,7 @@ echo "$prompt_web_port"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
 echo "$prompt_target_version"
-echo "17. 设置https访问"
+echo "15. 设置https访问"
 
 update() {
     stop
@@ -645,58 +646,52 @@ install_target() {
 }
 
 
-read -p "$(echo -e "[1-17]：")" choose
+read -p "$(echo -e "[0]：")" choose
 
 case $choose in
 1)
     installapp $VERSION
     ;;
 2)
-    update
-    ;;
-3)
     start
     ;;
-4)
+3)
     stop
     ;;
-5)
+4)
     restart
     ;;
-6)
+5)
     set_port
     ;;
-7)
+6)
     change_limit
     ;;
-8)
+7)
     enable_autostart
     ;;
-9)
+8)
     disable_autostart
     ;;
-10)
+9)
     check_hub
     ;;
-11)
+10)
     check_err
     ;;
-12)
+11)
     clearlog
     ;;
-13)
+12)
     lookport
     ;;
-14)
+13)
     uninstall
     ;;
-15)
+14)
     resetpass
     ;;
-16)
-    install_target
-    ;;
-17)
+15)
     set_https_admin
     ;;
 *)
