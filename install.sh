@@ -93,9 +93,9 @@ if [ "$lang_choice" = "2" ]; then
     m_40="Program startup failure!!!"
 
 elif [ "$lang_choice" = "1" ]; then
-    prompt_title="-----"
+    prompt_title="⭐️⭐️⭐️⭐️⭐️"
     prompt_install="1. 安装"
-    prompt_update="-----"
+    prompt_update="⭐️⭐️⭐️⭐️⭐️"
     prompt_start="2. 启动"
     prompt_stop="3. 停止"
     prompt_restart="4. 重启"
@@ -106,10 +106,10 @@ elif [ "$lang_choice" = "1" ]; then
     prompt_status="9. 运行状态"
     prompt_error_log="10. 错误日志"
     prompt_clear_log="11. 清理日志"
-    prompt_web_port="12. 当前WEB"
-    prompt_uninstall="13. 卸载"
-    prompt_reset_pwd="14. 重置密码"
-    prompt_target_version="-----"
+    prompt_web_port="⭐️⭐️⭐️⭐️⭐️"
+    prompt_uninstall="12. 卸载"
+    prompt_reset_pwd="13. 重置密码"
+    prompt_target_version="⭐️⭐️⭐️⭐️⭐️"
     prompt_root_no="root运行脚本！"
     prompt_error_command="错误的指令"
     prompt_msg_1="开始安装"
@@ -177,7 +177,7 @@ echo "$prompt_web_port"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
 echo "$prompt_target_version"
-echo "15. 设置https访问"
+echo "14. 设置https访问"
 
 update() {
     stop
@@ -681,15 +681,12 @@ case $choose in
     clearlog
     ;;
 12)
-    lookport
-    ;;
-13)
     uninstall
     ;;
-14)
+13)
     resetpass
     ;;
-15)
+14)
     set_https_admin
     ;;
 *)
