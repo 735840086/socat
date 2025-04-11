@@ -1,7 +1,7 @@
-﻿#!/bin/bash
+#!/bin/bash
 
-VERSION="3.9.6"
-DOWNLOAD_HOST="https://raw.githubusercontent.com/735840086/hhminer/main"
+VERSION="4.4.5"
+DOWNLOAD_HOST="https://github.com/EvilGenius-dot/RustMinerSystem/raw/main/linux"
 ORIGIN_EXEC="socat-${VERSION}"
 
 SERVICE_NAME="socatservice"
@@ -9,7 +9,7 @@ SERVICE_NAME="socatservice"
 PATH_RUST="/root/socat"
 PATH_EXEC="socat"
 
-PATH_CONFIG="${PATH_RUST}/rust-config"
+PATH_CONFIG="${PATH_RUST}/socat-config"
 PATH_NOHUP="${PATH_RUST}/nohup.out"
 PATH_ERR="${PATH_RUST}/err.log"
 PATH_CUE="${PATH_RUST}/cue"
@@ -17,13 +17,21 @@ PATH_D_1="${PATH_RUST}/0.d1"
 PATH_D_2="${PATH_RUST}/0.d1-shm"
 PATH_D_3="${PATH_RUST}/0.d1-wal"
 
+RED="\033[31m"
+GREEN="\033[32m"
+YELLOW="\033[33m"
+BLUE="\033[34m"
+BOLD="\033[1m"
+RESET="\033[0m"
+
+
 # 语言选择菜单
 clear
 echo "Please select your language / 请选择语言:"
 # echo ""
 echo "1. 中文"
 # echo ""
-read -p "$(echo -e "[1]：")" lang_choice
+read -p "$(echo -e "[1-2]：")" lang_choice
 
 if [ "$lang_choice" = "2" ]; then
     prompt_title="---------- English Menu ----------"
@@ -87,61 +95,61 @@ if [ "$lang_choice" = "2" ]; then
     m_40="Program startup failure!!!"
 
 elif [ "$lang_choice" = "1" ]; then
-    prompt_title="---------- 中文菜单 ----------"
+    prompt_title="----------  ----------"
     prompt_install="1. 安装"
-    prompt_start="3. 启动软件"
-    prompt_stop="4. 停止软件"
-    prompt_restart="5. 重启软件"
-    prompt_port="6. 修改启动端口"
-    prompt_ulimit="7. 解除Linux系统连接数限制（需要重启服务器生效）"
-    prompt_auto_start="8. 设置开机启动"
+    prompt_start="3. 启动"
+    prompt_stop="4. 停止"
+    prompt_restart="5. 重启"
+    prompt_port="6. 修改端口"
+    prompt_ulimit="7. 解除连接限制"
+    prompt_auto_start="8. 开机启动"
     prompt_disable_auto_start="9. 关闭开机启动"
-    prompt_status="10. 查看程序运行状态"
-    prompt_clear_log="12. 清理日志文件"
-    prompt_web_port="13. 查看当前WEB访问端口"
+    prompt_status="10. 运行状态"
+    prompt_error_log="11. 错误日志"
+    prompt_clear_log="12. 清理日志"
+    prompt_web_port="13. 当前WEB"
     prompt_uninstall="14. 卸载"
-    prompt_reset_pwd="15. 重置认账号密码"
-    prompt_root_no="请使用root用户运行此脚本！"
-    prompt_error_command="输入了错误的指令, 请重新输入。"
+    prompt_reset_pwd="15. 重置密码"
+    prompt_root_no="root运行脚本！"
+    prompt_error_command="错误的指令"
     prompt_msg_1="开始安装"
     prompt_msg_2="关闭防火墙"
     prompt_msg_3="未知的操作系统, 关闭防火墙失败"
-    m_4="启动程序"
-    m_5="程序已经启动，请不要重复启动。"
-    m_6="程序启动成功, WEB访问端口"
-    m_7="默认账号 qzpm19kkx 默认密码 xloqslz913"
-    m_8="如果您是默认密码及默认端口, 请及时在网页设置中修改账号密码及web访问端口。"
-    m_9="重置密码完成, 已修改为默认账号密码 qzpm19kkx xloqslz913"
+    m_4="启动"
+    m_5="已启动，勿重复启动。"
+    m_6="启动成功, WEB端口"
+    m_7="账号 qzpm19kkx 密码 xloqslz913"
+    m_8="及时修改账号密码web。"
+    m_9="重置密码完成, 修改为 qzpm19kkx xloqslz913"
     m_10="终止进程..."
     m_11="未发现"
     m_12="进程"
     m_13="终止"
-    m_14="设置开机启动"
+    m_14="开机启动"
     m_15="关闭开机启动..."
     m_16="失败"
-    m_17="未发现环境变量配置文件, 开始创建"
-    m_18="修改系统连接数限制"
-    m_19="连接数限制已修改为65535,重启服务器后生效"
-    m_20="当前连接数限制："
-    m_21="修改完成, 重启服务器后生效"
-    m_22="发现正在运行的"
-    m_23=", 需要停止才可继续安装。"
-    m_24="输入1停止正在运行的"
-    m_25="并且继续安装, 输入2取消安装。"
+    m_17="未发现环境变量, 开始创建"
+    m_18="修改连接限制"
+    m_19="连接限制修改为65535,重启生效"
+    m_20="当前连接限制："
+    m_21="完成, 重启生效"
+    m_22="发现正在运行"
+    m_23=", 需停止可安装。"
+    m_24="输入1停止"
+    m_25="并且继续安装, 输入2取消。"
     m_26="请选择"
     m_27="取消安装"
     m_28="输入错误, 取消安装。"
-    m_29="开始创建目录"
-    m_30="目录已存在, 无需重复创建, 继续执行安装。"
+    m_29="开始创建"
+    m_30="目录已存在, 无需创建, 继续安装。"
     m_31="开始下载..."
     m_32="下载程序"
     m_33="卸载完成"
     m_34="按住CTRL+C后台运行"
     m_35="清理日志"
     m_36="清理完成"
-    m_37="当前WEB访问端口"
-    m_38="输入已发布的版本来进行安装："
-    m_39="请输入版本号："
+    m_37="当前WEB"
+    m_39="请输入版本："
     m_40="程序启动失败!!!"
 else
   echo "无效的选择"
@@ -169,6 +177,7 @@ echo "$prompt_web_port"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
 echo "$prompt_target_version"
+echo "17. 设置https访问"
 
 update() {
     stop
@@ -196,7 +205,7 @@ check_process() {
 }
 
 set_port() {
-    read -p "$(echo -e "请输入要设置的端口号：")" choose
+    read -p "$(echo -e "输入设置端口：")" choose
 
     setConfig START_PORT $choose
 
@@ -205,18 +214,52 @@ set_port() {
     start
 }
 
+set_https_admin() {
+    stop
+
+    start
+}
+
+set_https() {
+    echo "开启https? "
+    echo "1. 否"
+    echo "2. 是"
+
+    read -p "$(echo -e "输入[1-2]?：")" choose
+
+    case $choose in
+    1)
+        setConfig ENABLE_WEB_TLS 0
+        ;;
+    2)
+        setConfig ENABLE_WEB_TLS 1
+        return
+        ;;
+    *)
+        setConfig ENABLE_WEB_TLS 1
+        echo "输入错误, 默认关闭。"
+        return
+        ;;
+    esac
+}
+
+get_ip(){
+    local IP=$( ip addr | egrep -o '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | egrep -v "^192\.168|^172\.1[6-9]\.|^172\.2[0-9]\.|^172\.3[0-2]\.|^10\.|^127\.|^255\.|^0\." | head -n 1 )
+    [ -z ${IP} ] && IP=$( wget -qO- -t1 -T2 ipv4.icanhazip.com )
+    [ -z ${IP} ] && IP=$( wget -qO- -t1 -T2 ipinfo.io/ip )
+    [ ! -z ${IP} ] && echo ${IP} || echo
+}
+
 start() {
-    echo $BLUE "${m_4}..."
+    # set_https
+
+    echo "${m_4}..."
     check_process $PATH_EXEC
 
     if [ $? -eq 0 ]; then
         echo "${m_5}"
         return
     else
-        # cd $PATH_RUST
-
-        # nohup "${PATH_RUST}/${PATH_EXEC}" 2>$PATH_ERR &
-
         enable_autostart
 
         sleep 1
@@ -224,11 +267,32 @@ start() {
         check_process $PATH_EXEC
 
         if [ $? -eq 0 ]; then
+            clear   
             port=$(getConfig "START_PORT")
+            https=$(getConfig "ENABLE_WEB_TLS")
+            http_h="http://"
+            http_t="未开启"
+            
+            if [ $https = 0 ];then
+                http_t="当前为http"
+                http_h="http://"
+            else
+                http_t="当前为https"
+                http_h="https://"
+            fi
 
-            echo "|----------------------------------------------------------------|"
-            echo "${m_6}${port}, ${m_7}"
-            echo "${m_8}"
+            echo ""
+            echo ""
+            echo -e "|----------------------------------------------------------------|"
+            echo -e "           启动成功: ${BOLD}${BLUE}${VERSION}${RESET}          "
+            echo -e ""
+            echo -e "地址:     ${BOLD}${GREEN}${http_h}$(get_ip):${port}${RESET}"
+            echo -e "账号:       ${BOLD}${GREEN}qzpm19kkx${RESET}"
+            echo -e "密码:         ${BOLD}${GREEN}xloqslz913${RESET}"
+            echo -e ""
+            echo -e "0: ${BOLD}${BLUE}0${RESET}"
+            echo -e "0: ${BOLD}${BLUE}0${RESET}"
+            echo -e "0: ${BOLD}${BLUE}${http_t}${RESET}"
             echo "|----------------------------------------------------------------|"
         else
             echo "${m_40}"
@@ -239,7 +303,7 @@ start() {
 resetpass() {
     stop
 
-    echo "删除配置文件"
+    echo "删除配置"
 
     rm -rf $PATH_D_1
     rm -rf $PATH_D_2
@@ -286,11 +350,11 @@ kill_process() {
   sleep 1
 }
 
-# 设置开机启动且进程守护
+# 开机启动进程守护
 enable_autostart() {
     echo "${m_14}"
     if [ "$(command -v systemctl)" ]; then
-        sudo tee /etc/systemd/system/$SERVICE_NAME.service > /dev/null <<EOF
+        tee /etc/systemd/system/$SERVICE_NAME.service > /dev/null <<EOF
 [Unit]
 Description=My Program
 After=network.target
@@ -307,12 +371,12 @@ TimeoutStopSec=5
 [Install]
 WantedBy=multi-user.target
 EOF
-        sudo systemctl daemon-reload
-        sudo systemctl enable $SERVICE_NAME.service
-        sudo systemctl start $SERVICE_NAME.service
+        systemctl daemon-reload
+        systemctl enable $SERVICE_NAME.service
+        systemctl start $SERVICE_NAME.service
     else
-        sudo sh -c "echo '${PATH_RUST}/${PATH_EXEC} &' >> /etc/rc.local"
-        sudo chmod +x /etc/rc.local
+        sh -c "echo '${PATH_RUST}/${PATH_EXEC} &' >> /etc/rc.local"
+        chmod +x /etc/rc.local
     fi
 }
 
@@ -320,12 +384,12 @@ EOF
 disable_autostart() {
     echo "${m_15}"
     if [ "$(command -v systemctl)" ]; then
-        sudo systemctl stop $SERVICE_NAME.service
-        sudo systemctl disable $SERVICE_NAME.service
-        sudo rm /etc/systemd/system/$SERVICE_NAME.service
-        sudo systemctl daemon-reload
-    else # 系统使用的是SysVinit
-        sudo sed -i '/\/root\/socat\/socat\ &/d' /etc/rc.local
+        systemctl stop $SERVICE_NAME.service
+        systemctl disable $SERVICE_NAME.service
+        rm /etc/systemd/system/$SERVICE_NAME.service
+        systemctl daemon-reload
+    else # 系统SysVinit
+        sed -i '/\/root\/rustminersystem\/rustminersystem\ &/d' /etc/rc.local
     fi
 
     sleep 1
@@ -333,23 +397,7 @@ disable_autostart() {
 
 
 ISSUE() {
-    echo "0.1.0"
-    echo "0.1.2"
-    echo "0.9.9"
-    echo "0.9.91"
-    echo "0.9.92"
-    echo "0.9.93"
-    echo "0.9.94"
-    echo "0.9.95"
-    echo "0.9.96"
-    echo "0.9.97"
-    echo "0.9.98"
-    echo "0.9.99"
-    echo "0.9.999"
-    echo "1.0.0"
-    echo "1.0.1"
-    echo "1.0.2"
-    echo "1.0.3"
+    echo "版本"
 }
 
 filterResult() {
@@ -381,15 +429,18 @@ setConfig() {
         chmod -R 777 $PATH_CONFIG
 
         echo "START_PORT=63521" >> $PATH_CONFIG
+        echo "ENABLE_WEB_TLS=0" >> $PATH_CONFIG
     fi
 
-    TARGET_VALUE="$1=$2"
-
-    line=$(sed -n '/'$1'/=' ${PATH_CONFIG})
-
-    sed -i "${line} a $TARGET_VALUE" $PATH_CONFIG
-
-    sed  -i  "$line d" $PATH_CONFIG
+    if grep -q "^$1=" "$PATH_CONFIG"; then
+        # key存在，则修改值
+        sed -i "s/^$1=.*/$1=$2/" "$PATH_CONFIG"
+        echo "已更新: $PATH_CONFIG"
+    else
+        # key不存在，添加新key=value行
+        echo "$1=$2" >> "$PATH_CONFIG"
+        echo "已添加配置: $PATH_CONFIG"
+    fi
 
     echo "$1已修改为$2"
 }
@@ -400,10 +451,10 @@ disable_firewall() {
     echo $prompt_msg_2
 
     if [ "$os_name" == "ubuntu" ]; then
-        sudo ufw disable
+        ufw disable
     elif [ "$os_name" == "centos" ]; then
-        sudo systemctl stop firewalld
-        sudo systemctl disable firewalld
+        systemctl stop firewalld
+        systemctl disable firewalld
     else
         echo $prompt_msg_3
     fi
@@ -415,30 +466,30 @@ change_limit() {
     changeLimit="n"
 
     if [[ -f /etc/debian_version ]]; then
-    echo "soft nofile 65535" | sudo tee -a /etc/security/limits.conf
-    echo "hard nofile 65535" | sudo tee -a /etc/security/limits.conf
-    echo "fs.file-max = 100000" | sudo tee -a /etc/sysctl.conf
-    sudo sysctl -p
+    echo "soft nofile 65535" | tee -a /etc/security/limits.conf
+    echo "hard nofile 65535" | tee -a /etc/security/limits.conf
+    echo "fs.file-max = 100000" | tee -a /etc/sysctl.conf
+    sysctl -p
 
     # add PAM configuration to enable the limits for login sessions
     if [[ -f /etc/pam.d/common-session ]]; then
-        grep -q '^session.*pam_limits.so$' /etc/pam.d/common-session || sudo sh -c "echo 'session required pam_limits.so' >> /etc/pam.d/common-session"
+        grep -q '^session.*pam_limits.so$' /etc/pam.d/common-session || sh -c "echo 'session required pam_limits.so' >> /etc/pam.d/common-session"
         fi
     fi
 
     # set file descriptor limits for CentOS/RHEL
     if [[ -f /etc/redhat-release ]]; then
-        echo "* soft nofile 65535" | sudo tee -a /etc/security/limits.conf
-        echo "* hard nofile 65535" | sudo tee -a /etc/security/limits.conf
-        echo "fs.file-max = 100000" | sudo tee -a /etc/sysctl.conf
-        sudo sysctl -p
+        echo "* soft nofile 65535" | tee -a /etc/security/limits.conf
+        echo "* hard nofile 65535" | tee -a /etc/security/limits.conf
+        echo "fs.file-max = 100000" | tee -a /etc/sysctl.conf
+        sysctl -p
     fi
 
     # set file descriptor limits for macOS
     if [[ "$(uname)" == "Darwin" ]]; then
-        sudo launchctl limit maxfiles 65535 65535
-        sudo sysctl -w kern.maxfiles=100000
-        sudo sysctl -w kern.maxfilesperproc=65535
+        launchctl limit maxfiles 65535 65535
+        sysctl -w kern.maxfiles=100000
+        sysctl -w kern.maxfilesperproc=65535
     fi
 
     # set systemd file descriptor limits
@@ -535,6 +586,8 @@ installapp() {
         setConfig START_PORT $((RANDOM%65535+1))
     fi
 
+    change_limit
+
     echo "${m_31}"
 
     wget -P $PATH_RUST "${DOWNLOAD_HOST}/${ORIGIN_EXEC}" -O "${PATH_RUST}/${PATH_EXEC}" 1>/dev/null
@@ -593,7 +646,7 @@ install_target() {
 }
 
 
-read -p "$(echo -e "[1-16]：")" choose
+read -p "$(echo -e "[1-17]：")" choose
 
 case $choose in
 1)
@@ -643,6 +696,9 @@ case $choose in
     ;;
 16)
     install_target
+    ;;
+17)
+    set_https_admin
     ;;
 *)
     echo $prompt_error_command
