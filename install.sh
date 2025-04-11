@@ -25,13 +25,13 @@ BOLD="\033[1m"
 RESET="\033[0m"
 
 
-# 语言选择菜单
+# 
 clear
-echo "Please select your language / 请选择语言:"
+echo "Please select your language / :"
 # echo ""
-echo "1. 中文"
+echo "1. 开始"
 # echo ""
-read -p "$(echo -e "[-]：")" lang_choice
+read -p "$(echo -e "[0]：")" lang_choice
 
 if [ "$lang_choice" = "2" ]; then
     prompt_title="---------- English Menu ----------"
