@@ -96,8 +96,7 @@ if [ "$lang_choice" = "2" ]; then
 
 elif [ "$lang_choice" = "1" ]; then
     prompt_title="----------  ----------"
-    prompt_install="1. 安装"
-prompt_start="3. 启动"
+    prompt_install="1. 安装"prompt_start="3. 启动"
     prompt_stop="4. 停止"
     prompt_restart="5. 重启"
     prompt_port="6. 修改端口"
