@@ -99,16 +99,16 @@ elif [ "$lang_choice" = "1" ]; then
     prompt_start="2. 启动"
     prompt_stop="3. 停止"
     prompt_restart="4. 重启"
-    prompt_port="5. 修改端口"
-    prompt_ulimit="6. 解除连接限制"
-    prompt_auto_start="7. 开机启动"
-    prompt_disable_auto_start="8. 关闭开机启动"
-    prompt_status="9. 运行状态"
+    prompt_port="⭐️⭐️⭐️⭐️⭐️⭐️"
+    prompt_ulimit="5. 解除连接限制"
+    prompt_auto_start="6. 开机启动"
+    prompt_disable_auto_start="7. 关闭开机启动"
+    prompt_status="8. 运行状态"
     prompt_error_log="⭐️⭐️⭐️⭐️⭐️⭐️"
-    prompt_clear_log="10. 清理日志"
+    prompt_clear_log="9. 清理日志"
     prompt_web_port="⭐️⭐️⭐️⭐️⭐️⭐️"
-    prompt_uninstall="11. 卸载"
-    prompt_reset_pwd="12. 重置密码"
+    prompt_uninstall="10. 卸载"
+    prompt_reset_pwd="11. 重置密码"
     prompt_target_version="⭐️⭐️⭐️⭐️⭐️⭐️"
     prompt_root_no="root运行脚本！"
     prompt_error_command="错误的指令"
@@ -177,7 +177,7 @@ echo "$prompt_web_port"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
 echo "$prompt_target_version"
-echo "13. 设置https访问"
+echo "12. 设置https访问"
 
 update() {
     stop
@@ -659,30 +659,27 @@ case $choose in
     restart
     ;;
 5)
-    set_port
-    ;;
-6)
     change_limit
     ;;
-7)
+6)
     enable_autostart
     ;;
-8)
+7)
     disable_autostart
     ;;
-9)
+8)
     check_hub
     ;;
-10)
+9)
     clearlog
     ;;
-11)
+10)
     uninstall
     ;;
-12)
+11)
     resetpass
     ;;
-13)
+12)
     set_https_admin
     ;;
 *)
