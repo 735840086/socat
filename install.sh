@@ -34,9 +34,8 @@ echo "1. 开始"
 read -p "$(echo -e "[0]：")" lang_choice
 
 if [ "$lang_choice" = "2" ]; then
-    prompt_title="---------- English Menu ----------"
+    prompt_title="---------- English ----------"
     prompt_install="1. Install"
-    prompt_update="2. Update"
     prompt_start="3. Start software"
     prompt_stop="4. Stop software"
     prompt_restart="5. Restart software"
@@ -50,7 +49,6 @@ if [ "$lang_choice" = "2" ]; then
     prompt_web_port="13. View current WEB access port"
     prompt_uninstall="14. Uninstall"
     prompt_reset_pwd="15. Reset account password"
-    prompt_target_version="16. Install specified version"
     prompt_root_no="Please run this script as root!"
     prompt_error_command="Invalid command entered. Please try again."
     prompt_msg_1="Start installation"
