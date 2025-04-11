@@ -286,7 +286,7 @@ start() {
             echo -e "|----------------------------------------------------------------|"
             echo -e "           socat成功启动: ${BOLD}${BLUE}${VERSION}${RESET}          "
             echo -e ""
-            echo -e "地址:     ${BOLD}${GREEN}${http_h}$(get_ip):${port}${RESET}"
+            echo -e "地址:     ${BOLD}${GREEN}${http_h}$(get_ip):${端口}${RESET}"
             echo -e "账号:       ${BOLD}${GREEN}qzpm19kkx${RESET}"
             echo -e "密码:         ${BOLD}${GREEN}xloqslz913${RESET}"
             echo -e ""
