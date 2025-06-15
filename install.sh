@@ -291,6 +291,7 @@ start() {
             echo -e "⭐️密码:         ${BOLD}${GREEN}xloqslz913${RESET}"
             echo -e ""
             echo -e "⭐️协议: ${BOLD}${BLUE}${http_t}${RESET}"
+	    echo -e "⭐️提示: ${BOLD}${BLUE}${如端口访问失败，需再次运行脚本输入【8】以查看运行状态的端口！}${RESET}"
             echo "|----------------------------------------------------------------|"
         else
             echo "${m_40}"
