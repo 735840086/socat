@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="4.6.7"
+VERSION="4.4.9"
 DOWNLOAD_HOST="https://raw.githubusercontent.com/735840086/hhminer/main"
 ORIGIN_EXEC="socat-${VERSION}"
 
