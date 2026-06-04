@@ -29,7 +29,7 @@ RESET="\033[0m"
 clear
 echo "---s o c a t---"
 # echo ""
-echo "1. 开始部署"
+echo "1. 部署服务"
 # echo ""
 read -p "$(echo -e "[→]：")" lang_choice
 
@@ -94,12 +94,12 @@ if [ "$lang_choice" = "2" ]; then
 
 elif [ "$lang_choice" = "1" ]; then
     prompt_title="⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
-    prompt_install="1. 安装"
-    prompt_start="2. 启动"
-    prompt_stop="3. 停止"
-    prompt_restart="4. 重启"
-    prompt_status="5. 卸载"
-    prompt_uninstall="6. 运行状态"
+    prompt_install="1. 安装服务"
+    prompt_start="2. 启动服务"
+    prompt_stop="3. 停止服务"
+    prompt_restart="4. 重启服务"
+    prompt_status="5. 卸载服务"
+    prompt_uninstall="6. 服务状态"
     prompt_reset_pwd="7. 重置密码"
 	prompt_title1="⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
     prompt_root_no="root运行脚本！"
