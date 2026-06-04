@@ -27,9 +27,9 @@ RESET="\033[0m"
 
 # 
 clear
-echo "Please select your language / :"
+echo "socat"
 # echo ""
-echo "1. 开始"
+echo "1. 开始部署"
 # echo ""
 read -p "$(echo -e "[0]：")" lang_choice
 
