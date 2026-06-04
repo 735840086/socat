@@ -27,7 +27,7 @@ RESET="\033[0m"
 
 # 
 clear
-echo "s o c a t"
+echo "-s o c a t-"
 # echo ""
 echo "1. 开始部署"
 # echo ""
@@ -153,21 +153,12 @@ clear
 
 echo "$prompt_title"
 echo "$prompt_install"
-echo "$prompt_update"
 echo "$prompt_start"
 echo "$prompt_stop"
 echo "$prompt_restart"
-echo "$prompt_port"
-echo "$prompt_ulimit"
-echo "$prompt_auto_start"
-echo "$prompt_disable_auto_start"
 echo "$prompt_status"
-echo "$prompt_error_log"
-echo "$prompt_clear_log"
-echo "$prompt_web_port"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
-echo "$prompt_target_version"
 echo "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
 
 update() {
