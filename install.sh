@@ -29,10 +29,9 @@ RESET="\033[0m"
 clear
 echo "---s o c a t---"
 # echo ""
-echo "1.    开 始 "
+echo "1.  开 始"
 # echo ""
 read -p "$(echo -e "[1]：")" lang_choice
-
 
 elif [ "$lang_choice" = "1" ]; then
     prompt_title="⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
