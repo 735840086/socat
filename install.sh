@@ -31,7 +31,7 @@ echo "---s o c a t---"
 # echo ""
 echo "1.  开 始 "
 # echo ""
-read -p "$(echo -e "[→]：")" lang_choice
+read -p "$(echo -e "[1]：")" lang_choice
 
 
 elif [ "$lang_choice" = "1" ]; then
