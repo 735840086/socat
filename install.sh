@@ -27,7 +27,7 @@ RESET="\033[0m"
 
 # 
 clear
-echo "------s o 11c a t------"
+echo "---s o c a t---"
 # echo ""
 echo "1. 开始部署"
 # echo ""
@@ -98,9 +98,10 @@ elif [ "$lang_choice" = "1" ]; then
     prompt_start="2. 启动"
     prompt_stop="3. 停止"
     prompt_restart="4. 重启"
-    prompt_status="5. 运行状态"
-    prompt_uninstall="6. 卸载"
+    prompt_status="5. 卸载"
+    prompt_uninstall="6. 运行状态"
     prompt_reset_pwd="7. 重置密码"
+	prompt_title1="⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
     prompt_root_no="root运行脚本！"
     prompt_error_command="错误的指令"
     prompt_msg_1="开始安装"
@@ -151,6 +152,7 @@ clear
 
 [ $(id -u) != "0" ] && { echo "$prompt_root_no"; exit 1; }
 
+echo "$prompt_title"
 echo "$prompt_install"
 echo "$prompt_start"
 echo "$prompt_stop"
@@ -158,6 +160,7 @@ echo "$prompt_restart"
 echo "$prompt_status"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
+echo "$prompt_title1"
 
 update() {
     stop
@@ -641,10 +644,10 @@ case $choose in
     restart
     ;;
 5)
-    check_hub
+    uninstall
     ;;
 6)
-    uninstall
+    check_hub
     ;;
 7)
     resetpass
