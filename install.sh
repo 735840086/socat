@@ -29,7 +29,7 @@ RESET="\033[0m"
 clear
 echo "---s o c a t---"
 # echo ""
-echo "1. 部署服务"
+echo "1.  开 始 "
 # echo ""
 read -p "$(echo -e "[→]：")" lang_choice
 
