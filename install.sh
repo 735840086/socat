@@ -95,12 +95,19 @@ if [ "$lang_choice" = "2" ]; then
 elif [ "$lang_choice" = "1" ]; then
     prompt_title="⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
     prompt_install="1. 安装"
+	
     prompt_start="2. 启动"
+	
     prompt_stop="3. 停止"
+	
     prompt_restart="4. 重启"
+	
     prompt_status="5. 运行状态"
+	
     prompt_uninstall="6. 卸载"
+	
     prompt_reset_pwd="7. 重置密码"
+	
     prompt_root_no="root运行脚本！"
     prompt_error_command="错误的指令"
     prompt_msg_1="开始安装"
