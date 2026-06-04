@@ -151,7 +151,6 @@ clear
 
 [ $(id -u) != "0" ] && { echo "$prompt_root_no"; exit 1; }
 
-echo "$prompt_title"
 echo "$prompt_install"
 echo "$prompt_start"
 echo "$prompt_stop"
@@ -159,7 +158,6 @@ echo "$prompt_restart"
 echo "$prompt_status"
 echo "$prompt_uninstall"
 echo "$prompt_reset_pwd"
-echo "⭐️⭐️⭐️⭐️⭐️⭐️⭐️⭐️"
 
 update() {
     stop
