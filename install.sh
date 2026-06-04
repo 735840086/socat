@@ -31,7 +31,7 @@ echo "---s o c a t---"
 # echo ""
 echo "1.   开 始"
 # echo ""
-read -p "$(echo -e "[1]：")" lang_choice
+read -p "$(echo -e "[→]：")" lang_choice
 
 if [ "$lang_choice" = "2" ]; then
     prompt_title="---------- English ----------"
