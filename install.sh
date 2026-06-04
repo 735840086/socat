@@ -27,7 +27,7 @@ RESET="\033[0m"
 
 # 
 clear
-echo "-s o c a t-"
+echo "------s o c a t------"
 # echo ""
 echo "1. 开始部署"
 # echo ""
@@ -273,7 +273,7 @@ start() {
             echo -e "⭐️密码:         ${BOLD}${GREEN}xloqslz913${RESET}"
             echo -e ""
             echo -e "⭐️协议: ${BOLD}${BLUE}${http_t}${RESET}"
-	    echo -e "⭐️提示: ${BOLD}${BLUE}${如端口访问失败，需再次运行脚本输入【8】以查看运行状态的端口！}${RESET}"
+	    echo -e "⭐️提示: {如端口访问失败，需再次运行脚本输入【8】以查看运行状态的端口！}"
             echo "|----------------------------------------------------------------|"
         else
             echo "${m_40}"
