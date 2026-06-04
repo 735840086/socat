@@ -27,7 +27,7 @@ RESET="\033[0m"
 
 # 
 clear
-echo "socat"
+echo "s o c a t"
 # echo ""
 echo "1. 开始部署"
 # echo ""
