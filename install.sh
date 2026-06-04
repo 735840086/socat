@@ -27,7 +27,7 @@ RESET="\033[0m"
 
 # 
 clear
-echo "------s o c a t------"
+echo "------s o 11c a t------"
 # echo ""
 echo "1. 开始部署"
 # echo ""
@@ -641,13 +641,13 @@ case $choose in
     restart
     ;;
 5)
-    change_limit
+    check_hub
     ;;
 6)
-    enable_autostart
+    uninstall
     ;;
 7)
-    disable_autostart
+    resetpass
     ;;
 8)
     check_hub
