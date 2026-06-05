@@ -279,7 +279,7 @@ start() {
             echo -e "⭐️默认账号:       ${BOLD}${GREEN}qzpm19kkx${RESET}"
             echo -e "⭐️默认密码:       ${BOLD}${GREEN}xloqslz913${RESET}"
             echo -e "⭐️WEB协议: ${BOLD}${BLUE}${http_t}${RESET}"
-	    echo -e "⭐️提示: {  部署成功后及时修改控制台的账号密码WEB端口}"
+	    echo -e "⭐️提示: {  部署成功后及时修改控制台的账号密码WEB端口  }"
             echo "|----------------------------------------------------------------|"
         else
             echo "${m_40}"
