@@ -243,15 +243,22 @@ start() {
         echo "${m_5}"
         return
     else
-        enable_autostart
-
+               enable_autostart
         sleep 1
-
         check_process $PATH_EXEC
-
         if [ $? -eq 0 ]; then
             clear   
-            port=$(grep -oP 'web访问端口【\K[0-9]+' $PATH_NOHUP | tail -n 1)
+            # ===== 修复：添加端口等待逻辑，最多等待10秒 =====
+            echo "等待服务启动并获取端口..."
+            port=""
+            for i in {1..10}; do
+                port=$(grep -oP 'web访问端口【\K[0-9]+' $PATH_NOHUP | tail -n 1)
+                if [ -n "$port" ]; then
+                    break
+                fi
+                sleep 1
+            done
+            # ==============================================
             https=$(getConfig "ENABLE_WEB_TLS")
             http_h="http://"
             http_t="未开启"
