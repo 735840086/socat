@@ -214,7 +214,7 @@ load_language() {
         prompt_https="7. 设置HTTPS协议"
         prompt_service_log="8. systemd日志"
         prompt_status="9. 运行日志"
-        prompt_error_log="110. 错误日志"
+        prompt_error_log="10. 错误日志"
         prompt_web_port="11. WEB端口"
         prompt_uninstall="12. 卸载服务"
         prompt_reset_pwd="13. 重置密码"
@@ -1984,67 +1984,67 @@ dispatch_menu_choice() {
         start
         ;;
     3)
-        install_target
-        ;;
-    4)
-        start
-        ;;
-    5)
         stop
         ;;
-    6)
+    4)
         restart
         ;;
-    7)
+    5)
         set_port
         ;;
-    8)
+    6)
         change_limit
         ;;
-    9)
+    7)
         set_https_admin
         ;;
-    10)
-        enable_web_ui_access
-        ;;
-    11)
-        disable_web_ui_access
-        ;;
-    12)
-        enable_autostart
-        ;;
-    13)
-        disable_autostart
-        ;;
-    14)
+    8)
         check_service_log
         ;;
-    15)
+    9)
         check_hub
         ;;
-    16)
+    10)
         check_err
         ;;
-    17)
-        clearlog
-        ;;
-    18)
+    11)
         lookport
         ;;
-    19)
+    12)
         uninstall
         ;;
-    20)
+    13)
         resetpass
         ;;
-    21)
+    14)
         show_runtime_status
         ;;
+    15)
+        c
+        ;;
+    16)
+        c
+        ;;
+    17)
+        c
+        ;;
+    18)
+        l
+        ;;
+    19)
+        u
+        ;;
+    20)
+        r
+        ;;
+    21)
+        s
+        ;;
     22)
-        install_cli
+        i
         ;;
     23)
-        uninstall_cli
+        u
         ;;
     *)
         echo "$prompt_error_command"
