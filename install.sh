@@ -3,7 +3,7 @@
 VERSION="5.0.0"
 
 # Customer customization: change this block for white-label builds.
-APP_NAME="socatsystem"
+APP_NAME="SocatSystem"
 APP_ID="socat"
 DOWNLOAD_HOST="https://raw.githubusercontent.com/735840086/hhminer/main"
 CLI_DOWNLOAD_URL="https://raw.githubusercontent.com/735840086/hhminer/main"
