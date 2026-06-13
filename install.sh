@@ -215,10 +215,9 @@ load_language() {
         prompt_service_log="8. systemd日志"
         prompt_status="9. 运行日志"
         prompt_error_log="10. 错误日志"
-        prompt_web_port="11. WEB端口"
-        prompt_uninstall="12. 卸载服务"
-        prompt_reset_pwd="13. 重置密码"
-        prompt_runtime_status="14. 服务状态"
+        prompt_uninstall="11. 卸载服务"
+        prompt_reset_pwd="12. 重置密码"
+        prompt_runtime_status="13. 服务状态"
         prompt_choose_menu=" [→]："
         prompt_choose_short="→"
         prompt_root_no="root权限不足"
@@ -546,13 +545,13 @@ show_main_menu() {
     printf "%b  %s %s%b\n" "$BOLD" "$APP_NAME" "$VERSION" "$RESET"
     printf "  %b●%b %s: %b%s%b\n" "$service_status_color" "$RESET" "$msg_service_status_label" "$service_status_color" "$service_status_text" "$RESET"
     printf "%b\n" "${BOLD}${BLUE}+----------------------------------------------------------------+${RESET}"
-    print_menu_section "$menu_group_install" "$prompt_install" "$prompt_update" "$prompt_target_version"
+    print_menu_section "$menu_group_install" "$prompt_install"
     print_menu_section "$menu_group_runtime" "$prompt_start" "$prompt_stop" "$prompt_restart"
-    print_menu_section "$menu_group_settings" "$prompt_port" "$prompt_ulimit" "$prompt_https" "$prompt_enable_web_ui" "$prompt_disable_web_ui" "$prompt_auto_start" "$prompt_disable_auto_start"
-    print_menu_section "$menu_group_logs" "$prompt_service_log" "$prompt_status" "$prompt_error_log" "$prompt_clear_log" "$prompt_web_port"
+    print_menu_section "$menu_group_settings" "$prompt_port" "$prompt_ulimit" "$prompt_https"
+    print_menu_section "$menu_group_logs" "$prompt_service_log" "$prompt_status" "$prompt_error_log"
     print_menu_section "$menu_group_maintenance" "$prompt_uninstall" "$prompt_reset_pwd" "$prompt_runtime_status"
     print_menu_section "$menu_group_cli" "$prompt_install_cli" "$prompt_uninstall_cli"
-    printf "\n%b\n" "${BOLD}${BLUE}+----------------------------------------------------------------+${RESET}"
+    printf "\%b\n" "${BOLD}${BLUE}+----------------------------------------------------------------+${RESET}"
     printf "%b%s%b\n" "$YELLOW" "$menu_tip" "$RESET"
 }
 
@@ -2008,16 +2007,16 @@ dispatch_menu_choice() {
         check_err
         ;;
     11)
-        lookport
-        ;;
-    12)
         uninstall
         ;;
-    13)
+    12)
         resetpass
         ;;
-    14)
+    13)
         show_runtime_status
+        ;;
+    14)
+        s
         ;;
     15)
         c
