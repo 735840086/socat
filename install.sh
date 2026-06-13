@@ -252,7 +252,7 @@ load_language() {
         msg_started_title="SocatSystem启动成功"
         msg_version_label="version"
         msg_backend_url="   ⭐WEB"
-        msg_default_username="️   ⭐默认密码"
+        msg_default_username="️  ⭐默认密码"
         msg_default_password="   ⭐默认密码"
         msg_tip_label="   ⭐提示"
         msg_public_firewall_tip="访问WEB后台需打开端口关闭防火墙"
