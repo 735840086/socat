@@ -206,19 +206,19 @@ load_language() {
         ;;
     1)
         prompt_install="1. 安装服务"
-        prompt_start="4. 启动服务"
-        prompt_stop="5. 停止服务"
-        prompt_restart="6. 重启服务"
-        prompt_port="7. 修改端口"
-        prompt_ulimit="8. 解除连接数限制"
-        prompt_https="9. 设置HTTPS协议"
-        prompt_service_log="14. systemd日志"
-        prompt_status="15. 运行日志"
-        prompt_error_log="16. 错误日志"
-        prompt_web_port="18. WEB端口"
-        prompt_uninstall="19. 卸载服务"
-        prompt_reset_pwd="20. 重置密码"
-        prompt_runtime_status="21. 服务状态"
+        prompt_start="2. 启动服务"
+        prompt_stop="3. 停止服务"
+        prompt_restart="4. 重启服务"
+        prompt_port="5. 修改端口"
+        prompt_ulimit="6. 解除连接数限制"
+        prompt_https="7. 设置HTTPS协议"
+        prompt_service_log="8. systemd日志"
+        prompt_status="9. 运行日志"
+        prompt_error_log="110. 错误日志"
+        prompt_web_port="11. WEB端口"
+        prompt_uninstall="12. 卸载服务"
+        prompt_reset_pwd="13. 重置密码"
+        prompt_runtime_status="14. 服务状态"
         prompt_choose_menu=" [→]："
         prompt_choose_short="→"
         prompt_root_no="root权限不足"
@@ -251,10 +251,10 @@ load_language() {
         msg_start_failed="SocatSystem启动失败"
         msg_started_title="SocatSystem启动成功"
         msg_version_label=" "
-        msg_backend_url="⭐️WEB"
-        msg_default_username="️⭐️默认账号"
-        msg_default_password="⭐️默认密码"
-        msg_tip_label="⭐️提示"
+        msg_backend_url="⭐WEB"
+        msg_default_username="️⭐默认密码"
+        msg_default_password="⭐默认密码"
+        msg_tip_label="⭐提示"
         msg_public_firewall_tip="访问管理后台, 需打开端口或关闭防火墙。"
         msg_default_security_tip="部署成功后及时修改控制台的账号密码WEB端口"
         msg_http_tip="⭐️WEB协议HTTP"
@@ -1981,7 +1981,7 @@ dispatch_menu_choice() {
         installapp "$VERSION"
         ;;
     2)
-        update
+        start
         ;;
     3)
         install_target
