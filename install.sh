@@ -3,8 +3,8 @@
 VERSION="5.0.0"
 
 # Customer customization: change this block for white-label builds.
-APP_NAME="socat"
-APP_ID="socat"
+APP_NAME="socatSystem"
+APP_ID="socatsystem"
 DOWNLOAD_HOST="https://raw.githubusercontent.com/735840086/hhminer/main"
 CLI_DOWNLOAD_URL="https://raw.githubusercontent.com/735840086/hhminer/main"
 
@@ -26,14 +26,14 @@ SYSCTL_TAG="${APP_ID}"
 INSTALL_DIR_GUARD="${APP_ID}"
 
 PATH_CONFIG="${PATH_SOCAT}/${CONFIG_FILE_NAME}"
-PATH_NOHUP="${PATH_SOCAT}/nohup.out"
-PATH_ERR="${PATH_SOCAT}/err.log"
-PATH_CUE="${PATH_SOCAT}/cue"
-PATH_D_1="${PATH_SOCAT}/0. d1"
-PATH_D_2="${PATH_SOCAT}/0.d1-shm"
-PATH_D_3="${PATH_SOCAT}/0.d1-wal"
-PATH_CLI="${PATH_SOCAT}/${CLI_EXEC_NAME}"
-PATH_CLI_TMP="${PATH_SOCAT}/${CLI_EXEC_NAME}.tmp"
+PATH_NOHUP="${PATH_RUST}/nohup.out"
+PATH_ERR="${PATH_RUST}/err.log"
+PATH_CUE="${PATH_RUST}/cue"
+PATH_D_1="${PATH_RUST}/0. d1"
+PATH_D_2="${PATH_RUST}/0.d1-shm"
+PATH_D_3="${PATH_RUST}/0.d1-wal"
+PATH_CLI="${PATH_RUST}/${CLI_EXEC_NAME}"
+PATH_CLI_TMP="${PATH_RUST}/${CLI_EXEC_NAME}.tmp"
 
 RED="\033[31m"
 GREEN="\033[32m"
@@ -479,18 +479,18 @@ is_valid_version() {
 }
 
 safe_remove_install_dir() {
-    if [ -z "$PATH_SOCAT" ] || [ "$PATH_SOCAT" = "/" ] || [[ "$PATH_SOCAT" != *"$INSTALL_DIR_GUARD"* ]]; then
-        echo "${msg_invalid_remove_path}: $PATH_SOCAT"
+    if [ -z "$PATH_RUST" ] || [ "$PATH_RUST" = "/" ] || [[ "$PATH_RUST" != *"$INSTALL_DIR_GUARD"* ]]; then
+        echo "${msg_invalid_remove_path}: $PATH_RUST"
         return 1
     fi
 
-    rm -rf -- "$PATH_SOCAT"
+    rm -rf -- "$PATH_RUST"
 }
 
 safe_remove_data_file() {
     local target="$1"
 
-    if [ -n "$target" ] && [[ "$target" == "$PATH_SOCAT"/* ]]; then
+    if [ -n "$target" ] && [[ "$target" == "$PATH_RUST"/* ]]; then
         rm -f -- "$target"
     fi
 }
@@ -796,8 +796,8 @@ get_ip(){
 }
 
 ensure_runtime_files() {
-    mkdir -p "$PATH_SOCAT"
-    chmod 755 "$PATH_SOCAT"
+    mkdir -p "$PATH_RUST"
+    chmod 755 "$PATH_RUST"
 
     [ -f "$PATH_NOHUP" ] || touch "$PATH_NOHUP"
     [ -f "$PATH_ERR" ] || touch "$PATH_ERR"
@@ -815,8 +815,8 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=$PATH_SOCAT/
-ExecStart=/bin/sh -c 'exec "\$1" >> "\$2" 2>> "\$3"' sh "$PATH_SOCAT/$PATH_EXEC" "$PATH_NOHUP" "$PATH_ERR"
+WorkingDirectory=$PATH_RUST/
+ExecStart=/bin/sh -c 'exec "\$1" >> "\$2" 2>> "\$3"' sh "$PATH_RUST/$PATH_EXEC" "$PATH_NOHUP" "$PATH_ERR"
 Restart=always
 RestartSec=3
 LimitNOFILE=65535
@@ -1003,7 +1003,7 @@ start() {
             create_systemd_service
             systemctl start "${SERVICE_NAME}.service"
         else
-            nohup "$PATH_SOCAT/$PATH_EXEC" >> "$PATH_NOHUP" 2>> "$PATH_ERR" &
+            nohup "$PATH_RUST/$PATH_EXEC" >> "$PATH_NOHUP" 2>> "$PATH_ERR" &
         fi
 
         if wait_for_process_started "$PATH_EXEC" 10; then
@@ -1101,9 +1101,9 @@ enable_autostart() {
             printf "%s\n\n%s\n" "#!/bin/sh" "exit 0" > /etc/rc.local
         fi
 
-        if ! grep -q "$PATH_SOCAT/$PATH_EXEC" /etc/rc.local; then
-            sed -i "/^exit 0/i ${PATH_SOCAT}/${PATH_EXEC} >> ${PATH_NOHUP} 2>> ${PATH_ERR} &" /etc/rc.local 2>/dev/null || \
-                echo "${PATH_SOCAT}/${PATH_EXEC} >> ${PATH_NOHUP} 2>> ${PATH_ERR} &" >> /etc/rc.local
+        if ! grep -q "$PATH_RUST/$PATH_EXEC" /etc/rc.local; then
+            sed -i "/^exit 0/i ${PATH_RUST}/${PATH_EXEC} >> ${PATH_NOHUP} 2>> ${PATH_ERR} &" /etc/rc.local 2>/dev/null || \
+                echo "${PATH_RUST}/${PATH_EXEC} >> ${PATH_NOHUP} 2>> ${PATH_ERR} &" >> /etc/rc.local
         fi
         chmod +x /etc/rc.local
     fi
@@ -1152,8 +1152,8 @@ getConfig() {
 setConfig() {
     if [ ! -f "$PATH_CONFIG" ]; then
         echo "${msg_config_missing}"
-        mkdir -p "$PATH_SOCAT"
-        chmod 755 "$PATH_SOCAT"
+        mkdir -p "$PATH_RUST"
+        chmod 755 "$PATH_RUST"
         touch "$PATH_CONFIG"
 
         chmod 600 "$PATH_CONFIG"
@@ -1212,7 +1212,7 @@ installapp() {
         ORIGIN_EXEC="${DOWNLOAD_EXEC_PREFIX}-${target_version}"
     fi
 
-    tmp_exec="${PATH_SOCAT}/${PATH_EXEC}.tmp"
+    tmp_exec="${PATH_RUST}/${PATH_EXEC}.tmp"
 
     echo "$ORIGIN_EXEC"
 
@@ -1244,9 +1244,9 @@ installapp() {
 
     echo "${msg_create_dir}"
 
-    if [[ ! -d $PATH_SOCAT ]];then
-        mkdir -p "$PATH_SOCAT"
-        chmod 755 "$PATH_SOCAT"
+    if [[ ! -d $PATH_RUST ]];then
+        mkdir -p "$PATH_RUST"
+        chmod 755 "$PATH_RUST"
     else
         printf "%b%s%b\n" "$YELLOW" "$msg_dir_exists" "$RESET"
     fi
@@ -1268,7 +1268,7 @@ installapp() {
     filterResult $? "${msg_download_program}"
 
     chmod 755 "$tmp_exec"
-    mv -f "$tmp_exec" "${PATH_SOCAT}/${PATH_EXEC}"
+    mv -f "$tmp_exec" "${PATH_RUST}/${PATH_EXEC}"
 
     enable_autostart
 
@@ -1316,7 +1316,7 @@ ensure_cli_dependencies() {
 }
 
 is_socatsystem_installed() {
-    [ -x "${PATH_SOCAT}/${PATH_EXEC}" ]
+    [ -x "${PATH_RUST}/${PATH_EXEC}" ]
 }
 
 is_cli_legacy_link_target() {
@@ -1437,7 +1437,7 @@ create_cli_launcher() {
 #!/bin/sh
 # ${CLI_LAUNCHER_MARKER}
 
-APP_DIR="$PATH_SOCAT"
+APP_DIR="$PATH_RUST"
 APP_EXEC="$PATH_EXEC"
 CLI_EXEC="$CLI_EXEC_NAME"
 SERVICE_NAME="$SERVICE_NAME"
@@ -1625,8 +1625,8 @@ install_cli() {
         create_cli_launcher
         filterResult $? "$msg_cli_install_start"
     else
-        mkdir -p "$PATH_SOCAT"
-        chmod 755 "$PATH_SOCAT"
+        mkdir -p "$PATH_RUST"
+        chmod 755 "$PATH_RUST"
 
         echo "${msg_downloading}"
         rm -f -- "$PATH_CLI_TMP"
@@ -1873,7 +1873,7 @@ show_runtime_status() {
         fi
         [ -f "/etc/systemd/system/${SERVICE_NAME}.service" ] && service_file_status="$text_present" || service_file_status="$text_missing"
     else
-        if [ -f /etc/rc.local ] && grep -q "$PATH_SOCAT/$PATH_EXEC" /etc/rc.local 2>/dev/null; then
+        if [ -f /etc/rc.local ] && grep -q "$PATH_RUST/$PATH_EXEC" /etc/rc.local 2>/dev/null; then
             autostart_status="$text_yes"
         else
             autostart_status="$text_no"
@@ -1909,8 +1909,8 @@ show_runtime_status() {
         cli_launcher_status="$text_missing"
     fi
 
-    [ -d "$PATH_SOCAT" ] && install_dir_status="${text_present} (${PATH_SOCAT})" || install_dir_status="${text_missing} (${PATH_SOCAT})"
-    [ -x "${PATH_SOCAT}/${PATH_EXEC}" ] && exec_status="${text_present} (${PATH_SOCAT}/${PATH_EXEC})" || exec_status="${text_missing} (${PATH_SOCAT}/${PATH_EXEC})"
+    [ -d "$PATH_RUST" ] && install_dir_status="${text_present} (${PATH_RUST})" || install_dir_status="${text_missing} (${PATH_RUST})"
+    [ -x "${PATH_RUST}/${PATH_EXEC}" ] && exec_status="${text_present} (${PATH_RUST}/${PATH_EXEC})" || exec_status="${text_missing} (${PATH_RUST}/${PATH_EXEC})"
     [ -f "$PATH_CONFIG" ] && config_status="${text_present} (${PATH_CONFIG})" || config_status="${text_missing} (${PATH_CONFIG})"
     [ -f "/etc/security/limits.d/99-${SYSCTL_TAG}.conf" ] && limit_config_status="$text_present" || limit_config_status="$text_missing"
 
