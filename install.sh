@@ -52,7 +52,7 @@ select_language() {
     echo "----S O C A T---:"
     echo "----------------"
     echo "1.    开 始 "
-    read -p "$(echo -e "[1]：")" lang_choice
+    read -p "$(echo -e "[→]：")" lang_choice
 }
 
 load_language() {
