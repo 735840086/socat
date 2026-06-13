@@ -551,7 +551,7 @@ show_main_menu() {
     print_menu_section "$menu_group_logs" "$prompt_service_log" "$prompt_status" "$prompt_error_log"
     print_menu_section "$menu_group_maintenance" "$prompt_uninstall" "$prompt_reset_pwd" "$prompt_runtime_status"
     print_menu_section "$menu_group_cli" "$prompt_install_cli" "$prompt_uninstall_cli"
-    printf "\%b\n" "${BOLD}${BLUE}+----------------------------------------------------------------+${RESET}"
+    printf "%b\n" "${BOLD}${BLUE}+----------------------------------------------------------------+${RESET}"
     printf "%b%s%b\n" "$YELLOW" "$menu_tip" "$RESET"
 }
 
